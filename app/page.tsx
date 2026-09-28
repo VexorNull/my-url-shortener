@@ -67,7 +67,6 @@ export default function Home() {
         paddingBottom: '40px'
       }}>
         
-        {/* Badge */}
         <div style={{
           padding: '6px 16px',
           marginBottom: '24px',
@@ -84,7 +83,6 @@ export default function Home() {
           Level 30 Glassmorphism 3.0
         </div>
 
-        {/* Heading */}
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <h1 style={{
             fontSize: '2.5rem',
@@ -102,7 +100,6 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Glassmorphism Card */}
         <div style={{
           width: '100%',
           background: 'rgba(15, 23, 42, 0.6)',
@@ -199,7 +196,6 @@ export default function Home() {
           )}
         </div>
 
-        {/* Success Output Glass Card */}
         {shortUrl && (
           <div style={{
             marginTop: '24px',
@@ -250,7 +246,6 @@ export default function Home() {
 
       </div>
 
-      {/* Footer */}
       <footer style={{
         padding: '20px',
         textAlign: 'center',
