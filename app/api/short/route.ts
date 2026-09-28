@@ -23,14 +23,12 @@ export async function POST(request: Request) {
 
     let code = customCode ? customCode.trim() : nanoid(6);
 
-    // Validate custom code characters (alphanumeric and dashes only)
     if (customCode) {
       const isValid = /^[a-zA-Z0-9-_]+$/.test(code);
       if (!isValid) {
         return NextResponse.json({ error: 'Custom alias can only contain letters, numbers, hyphens and underscores.' }, { status: 400 });
       }
 
-      // Check if custom code already exists
       const existing = await redis.get(code);
       if (existing) {
         return NextResponse.json({ error: 'This custom alias is already taken. Choose another one.' }, { status: 400 });
