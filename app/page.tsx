@@ -45,30 +45,78 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
-      <div className="max-w-2xl mx-auto px-4 py-16 w-full flex flex-col items-center justify-center flex-grow">
+    <main style={{
+      minHeight: '100vh',
+      backgroundColor: '#030712',
+      backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%)',
+      color: '#f3f4f6',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      padding: '20px'
+    }}>
+      <div style={{
+        maxWidth: '550px',
+        width: '100%',
+        margin: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingTop: '40px',
+        paddingBottom: '40px'
+      }}>
         
         {/* Badge */}
-        <span className="px-3.5 py-1.5 mb-6 text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-500/10 border border-indigo-500/20 rounded-full">
-          Level 30 Pro URL Shortener
-        </span>
+        <div style={{
+          padding: '6px 16px',
+          marginBottom: '24px',
+          fontSize: '12px',
+          fontWeight: 600,
+          letterSpacing: '1px',
+          textTransform: 'uppercase',
+          color: '#818cf8',
+          background: 'rgba(99, 102, 241, 0.1)',
+          border: '1px solid rgba(99, 102, 241, 0.2)',
+          borderRadius: '50px',
+          boxShadow: '0 0 20px rgba(99, 102, 241, 0.1)'
+        }}>
+          Level 30 Glassmorphism 3.0
+        </div>
 
         {/* Heading */}
-        <div className="text-center mb-10">
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-4 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent">
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+          <h1 style={{
+            fontSize: '2.5rem',
+            fontWeight: 900,
+            letterSpacing: '-1px',
+            marginBottom: '12px',
+            background: 'linear-gradient(135deg, #60a5fa 0%, #818cf8 50%, #c084fc 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
             VexorNull Shortener
           </h1>
-          <p className="text-slate-400 text-base sm:text-lg max-w-lg mx-auto">
-            Transform bulky links into clean, lightning-fast, custom branded short URLs.
+          <p style={{ color: '#94a3b8', fontSize: '1rem', lineHeight: '1.5' }}>
+            Transform bulky links into clean, lightning-fast, custom branded short URLs with advanced glass styling.
           </p>
         </div>
 
-        {/* Form Card */}
-        <div className="w-full bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-2xl shadow-indigo-950/50">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        {/* Glassmorphism Card */}
+        <div style={{
+          width: '100%',
+          background: 'rgba(15, 23, 42, 0.6)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '32px',
+          borderRadius: '24px',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(99, 102, 241, 0.1)'
+        }}>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
-                Destination URL <span className="text-indigo-400">*</span>
+              <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#cbd5e1', marginBottom: '8px' }}>
+                Destination URL <span style={{ color: '#818cf8' }}>*</span>
               </label>
               <input
                 type="url"
@@ -76,58 +124,126 @@ export default function Home() {
                 placeholder="https://example.com/very-long-url"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-600 text-sm"
+                style={{
+                  width: '100%',
+                  padding: '14px 16px',
+                  backgroundColor: 'rgba(3, 7, 18, 0.8)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '14px',
+                  outline: 'none',
+                  color: '#f3f4f6',
+                  fontSize: '0.95rem',
+                  boxSizing: 'border-box'
+                }}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
-                Custom Alias <span className="text-slate-500 text-xs">(Optional)</span>
+              <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#cbd5e1', marginBottom: '8px' }}>
+                Custom Alias <span style={{ color: '#64748b', fontSize: '0.75rem' }}>(Optional)</span>
               </label>
               <input
                 type="text"
                 placeholder="e.g. my-custom-link"
                 value={customCode}
                 onChange={(e) => setCustomCode(e.target.value)}
-                className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-600 text-sm"
+                style={{
+                  width: '100%',
+                  padding: '14px 16px',
+                  backgroundColor: 'rgba(3, 7, 18, 0.8)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '14px',
+                  outline: 'none',
+                  color: '#f3f4f6',
+                  fontSize: '0.95rem',
+                  boxSizing: 'border-box'
+                }}
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 px-4 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 transition-all font-bold rounded-2xl text-white disabled:opacity-50 shadow-lg shadow-indigo-600/30 text-sm tracking-wide cursor-pointer"
+              style={{
+                width: '100%',
+                padding: '15px',
+                background: 'linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '14px',
+                fontWeight: 700,
+                fontSize: '0.95rem',
+                cursor: 'pointer',
+                boxShadow: '0 10px 25px -5px rgba(79, 70, 229, 0.4)',
+                opacity: loading ? 0.7 : 1,
+                transition: 'all 0.2s ease'
+              }}
             >
               {loading ? 'Creating Short Link...' : 'Generate Short Link'}
             </button>
           </form>
 
           {error && (
-            <div className="mt-4 p-4 bg-red-500/10 border border-red-500/20 text-red-400 rounded-2xl text-sm font-medium">
+            <div style={{
+              marginTop: '16px',
+              padding: '12px 16px',
+              backgroundColor: 'rgba(239, 68, 68, 0.1)',
+              border: '1px solid rgba(239, 68, 68, 0.2)',
+              color: '#f87171',
+              borderRadius: '12px',
+              fontSize: '0.875rem',
+              fontWeight: 500
+            }}>
               {error}
             </div>
           )}
         </div>
 
-        {/* Success Output */}
+        {/* Success Output Glass Card */}
         {shortUrl && (
-          <div className="mt-6 w-full bg-slate-900 border border-indigo-500/40 p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-            <div className="truncate w-full text-center sm:text-left">
-              <span className="text-xs text-slate-400 block mb-1">Your Branded Short Link:</span>
+          <div style={{
+            marginTop: '24px',
+            width: '100%',
+            background: 'rgba(15, 23, 42, 0.6)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(99, 102, 241, 0.3)',
+            padding: '20px',
+            borderRadius: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+            boxSizing: 'border-box',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
+          }}>
+            <div>
+              <span style={{ fontSize: '0.75rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Your Branded Short Link:</span>
               <a
                 href={shortUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-400 hover:underline truncate font-semibold text-sm sm:text-base"
+                style={{ color: '#818cf8', textDecoration: 'none', fontWeight: 600, wordBreak: 'break-all', fontSize: '0.95rem' }}
               >
                 {shortUrl}
               </a>
             </div>
             <button
               onClick={copyToClipboard}
-              className="w-full sm:w-auto px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 transition-colors text-xs font-bold uppercase tracking-wider rounded-xl text-white shrink-0 shadow-md shadow-indigo-600/20 cursor-pointer"
+              style={{
+                width: '100%',
+                padding: '10px',
+                backgroundColor: '#4f46e5',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '10px',
+                fontWeight: 700,
+                fontSize: '0.8rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                cursor: 'pointer'
+              }}
             >
-              {copied ? 'Copied!' : 'Copy Link'}
+              {copied ? 'Copied Successfully!' : 'Copy Link'}
             </button>
           </div>
         )}
@@ -135,16 +251,17 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="py-6 text-center text-xs text-slate-500 border-t border-slate-900 w-full">
-        <p className="flex items-center justify-center gap-1.5 flex-wrap">
-          Engineered with precision by 
-          <span className="text-slate-300 font-semibold">Tanveer Hussain</span>
-          <a 
-            href="https://github.com/vexornull" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-indigo-400 hover:underline font-mono ml-1"
-          >
+      <footer style={{
+        padding: '20px',
+        textAlign: 'center',
+        fontSize: '0.75rem',
+        color: '#64748b',
+        borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+        background: 'rgba(3, 7, 18, 0.5)'
+      }}>
+        <p style={{ margin: 0 }}>
+          Engineered with precision by <span style={{ color: '#cbd5e1', fontWeight: 600 }}>Tanveer Hussain</span> 
+          <a href="https://github.com/vexornull" target="_blank" rel="noopener noreferrer" style={{ color: '#818cf8', textDecoration: 'none', marginLeft: '6px', fontFamily: 'monospace' }}>
             (@vexornull)
           </a>
         </p>
