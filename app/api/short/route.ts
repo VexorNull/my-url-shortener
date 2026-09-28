@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
       const existing = await redis.get(code);
       if (existing) {
-        return NextResponse.json({ error: 'This custom alias is already taken. Choose another one.' }, { status: 400 });
+        return NextResponse.json({ error: 'This custom alias is already taken.' }, { status: 400 });
       }
     }
 
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
     const host = request.headers.get('host') || 'localhost:3000';
     const protocol = host.includes('localhost') ? 'http' : 'https';
-    const shortUrl = `${protocol}://${host}/${code}`;
+    const shortUrl = `${protocol}://${host}/s/${code}`;
 
     return NextResponse.json({ code, shortUrl });
   } catch (error) {
