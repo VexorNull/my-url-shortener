@@ -9,7 +9,7 @@ const redis = new Redis({
 
 export async function POST(request: Request) {
   try {
-    const { url } = await request.json();
+    const { url, customCode } = await request.json();
 
     if (!url) {
       return NextResponse.json({ error: 'URL is required' }, { status: 400 });
@@ -18,10 +18,24 @@ export async function POST(request: Request) {
     try {
       new URL(url);
     } catch {
-      return NextResponse.json({ error: 'Invalid URL format. Please include http:// or https://' }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid URL format. Include http:// or https://' }, { status: 400 });
     }
 
-    const code = nanoid(6);
+    let code = customCode ? customCode.trim() : nanoid(6);
+
+    // Validate custom code characters (alphanumeric and dashes only)
+    if (customCode) {
+      const isValid = /^[a-zA-Z0-9-_]+$/.test(code);
+      if (!isValid) {
+        return NextResponse.json({ error: 'Custom alias can only contain letters, numbers, hyphens and underscores.' }, { status: 400 });
+      }
+
+      // Check if custom code already exists
+      const existing = await redis.get(code);
+      if (existing) {
+        return NextResponse.json({ error: 'This custom alias is already taken. Choose another one.' }, { status: 400 });
+      }
+    }
 
     await redis.set(code, url);
 
