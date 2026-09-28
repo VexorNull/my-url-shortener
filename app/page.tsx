@@ -256,7 +256,7 @@ export default function Home() {
       }}>
         <p style={{ margin: 0 }}>
           Engineered with precision by <span style={{ color: '#cbd5e1', fontWeight: 600 }}>Tanveer Hussain</span> 
-          <a href="https://github.com/vexornull" target="_blank" rel="noopener noreferrer" style={{ color: '#818cf8', textDecoration: 'none', marginLeft: '6px', fontFamily: 'monospace' }}>
+          <a href="https://instagram.com/vexornull" target="_blank" rel="noopener noreferrer" style={{ color: '#818cf8', textDecoration: 'none', marginLeft: '6px', fontFamily: 'monospace' }}>
             (@vexornull)
           </a>
         </p>
