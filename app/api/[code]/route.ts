@@ -11,13 +11,20 @@ export async function GET(
   { params }: { params: { code: string } }
 ) {
   try {
-    const code = params.code;
+    const rawCode = params.code;
     
-    if (!code) {
+    if (!rawCode || rawCode === 'favicon.ico') {
       return NextResponse.redirect(new URL('/', request.url));
     }
 
-    const originalUrl = await redis.get<string>(code);
+    // Case-insensitive match ke liye lowercase ya exact match check karein
+    const code = rawCode.trim();
+    let originalUrl = await redis.get<string>(code);
+
+    // Agar exact match na mile toh lowercase karke check karein
+    if (!originalUrl) {
+      originalUrl = await redis.get<string>(code.toLowerCase());
+    }
 
     if (!originalUrl) {
       return NextResponse.redirect(new URL('/', request.url));
