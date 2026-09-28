@@ -264,3 +264,12 @@ export default function Home() {
     </main>
   );
 }
+
+// Favicon configuration for Next.js App Router
+export const metadata = {
+  title: 'VexorNull Shortener',
+  description: 'Transform bulky links into clean short URLs',
+  icons: {
+    icon: '/favicon.gif',
+  },
+};
