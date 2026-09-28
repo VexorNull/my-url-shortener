@@ -44,6 +44,23 @@ export default function Home() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Secure Clear function with PIN verification (PIN: 7070)
+  const handleClear = () => {
+    const enteredPin = prompt('Enter Security PIN to Clear:');
+    
+    if (enteredPin === null) return; // Agar user cancel karde
+
+    if (enteredPin === '7070') {
+      setUrl('');
+      setCustomCode('');
+      setShortUrl('');
+      setError('');
+      setCopied(false);
+    } else {
+      alert('Incorrect PIN! Access Denied.');
+    }
+  };
+
   return (
     <main style={{
       minHeight: '100vh',
@@ -158,26 +175,46 @@ export default function Home() {
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              style={{
-                width: '100%',
-                padding: '15px',
-                background: 'linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '14px',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                cursor: 'pointer',
-                boxShadow: '0 10px 25px -5px rgba(79, 70, 229, 0.4)',
-                opacity: loading ? 0.7 : 1,
-                transition: 'all 0.2s ease'
-              }}
-            >
-              {loading ? 'Creating Short Link...' : 'Generate Short Link'}
-            </button>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  flex: 1,
+                  padding: '15px',
+                  background: 'linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '14px',
+                  fontWeight: 700,
+                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  boxShadow: '0 10px 25px -5px rgba(79, 70, 229, 0.4)',
+                  opacity: loading ? 0.7 : 1,
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {loading ? 'Creating...' : 'Generate Short Link'}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleClear}
+                style={{
+                  padding: '15px 20px',
+                  backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                  border: '1px solid rgba(239, 68, 68, 0.2)',
+                  color: '#f87171',
+                  borderRadius: '14px',
+                  fontWeight: 700,
+                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                Clear
+              </button>
+            </div>
           </form>
 
           {error && (
@@ -265,7 +302,6 @@ export default function Home() {
   );
 }
 
-// Favicon configuration for Next.js App Router
 export const metadata = {
   title: 'VexorNull Shortener',
   description: 'Transform bulky links into clean short URLs',
