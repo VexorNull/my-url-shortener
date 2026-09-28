@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Agar koi extra config ho toh yahan ho sakti hai
+  reactStrictMode: true,
+  // Domain change ke baad trailing slash ya routing issues ko resolve karne ke liye
+  trailingSlash: false,
 };
 
 module.exports = nextConfig;
